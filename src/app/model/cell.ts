@@ -19,12 +19,12 @@ export class Cell {
     if (this.bgColor === CellStates.SHIPPED) {
       this.bgColor = CellStates.SHOT;
       this.gameController.shooted();
-      setTimeout(() => this.gameController.yourTurn(), 900);
+      setTimeout(() => this.gameController.yourturn(), 900);
     }
     if (this.bgColor === CellStates.NONE) {
       this.bgColor = CellStates.MISSED;
       this.gameController.missed();
-      setTimeout(() => this.gameController.yourTurn(), 900);
+      setTimeout(() => this.gameController.yourturn(), 900);
     }
   }
 
