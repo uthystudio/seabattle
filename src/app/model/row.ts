@@ -1,5 +1,6 @@
 import {Cell} from './cell';
 import {GameController} from './game-controller';
+import {Ship} from './ship';
 
 export class Row {
   cells: Cell[] = [];
@@ -17,9 +18,9 @@ export class Row {
     this.cells.push(new Cell(gameController));
   }
 
-  setShip(x: number) {
+  setShip(x: number, ship: Ship) {
     if (x >= 0 && x < 10) {
-      this.cells[x].setShip();
+      this.cells[x].setShip(ship);
     }
   }
 }

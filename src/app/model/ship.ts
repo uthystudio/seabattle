@@ -1,6 +1,16 @@
+import {isBoolean} from 'util';
+
 export class Ship {
-  public size: number;
-  public id: number;
   // Количество подбитых клеток
-  public shotCells: number;
+  private shotCells: number;
+
+  constructor(private size: number) {
+    this.shotCells = 0;
+  }
+  shooted() {
+    this.shotCells++;
+  }
+  isKilled() {
+    return this.size === this.shotCells;
+  }
 }

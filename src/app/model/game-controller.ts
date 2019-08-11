@@ -11,8 +11,12 @@ export class GameController {
   yourturn() {
     this.message = '>> Ваш ход!';
   }
-  shooted() {
-    this.message = '>> Попал!';
+  shooted(isKilled: boolean) {
+    if (isKilled === true) {
+      this.message = '>> Убил!';
+    } else {
+      this.message = '>>> Попал!';
+    }
   }
   missed() {
     this.message = '>> Промахнулся!';

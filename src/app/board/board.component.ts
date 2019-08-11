@@ -10,7 +10,6 @@ import {Ship} from '../model/ship';
 })
 export class BoardComponent implements OnInit {
   rows: Row[] = [];
-  ships: Ship[] = [];
   constructor(gameController: GameController) {
     this.rows.push(new Row(gameController));
     this.rows.push(new Row(gameController));
@@ -23,25 +22,24 @@ export class BoardComponent implements OnInit {
     this.rows.push(new Row(gameController));
     this.rows.push(new Row(gameController));
 
-    this.ships.push({id: 1, size: 4, shotCells: 0});
-    this.setShip(0, 1);
-    this.setShip(1, 1);
-    this.setShip(2, 1);
-    this.setShip(3, 1);
+    const ship = new Ship(4);
+    this.setShip(0, 1, ship);
+    this.setShip(1, 1, ship);
+    this.setShip(2, 1, ship);
+    this.setShip(3, 1, ship);
 
-    this.ships.push({id: 2, size: 3, shotCells: 0});
-    this.setShip(5, 0);
-    this.setShip(5, 1);
-    this.setShip(5, 2);
+    const shipx = new Ship(2);
+    this.setShip(3, 6, shipx);
+    this.setShip(4, 6, shipx);
 
   }
 
   ngOnInit() {
   }
 
-  setShip(x: number, y: number) {
+  setShip(x: number, y: number, ship: Ship) {
     if (y >= 0 && y < 10) {
-      this.rows[y].setShip(x);
+      this.rows[y].setShip(x, ship);
     }
   }
 }
