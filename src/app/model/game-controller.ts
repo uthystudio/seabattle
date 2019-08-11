@@ -6,9 +6,9 @@ import {Injectable} from '@angular/core';
 export class GameController {
   message: string;
   constructor() {
-    this.yourturn();
+    this.yourTurn();
   }
-  yourturn() {
+  yourTurn() {
     this.message = '>> Ваш ход!';
   }
   shooted() {
