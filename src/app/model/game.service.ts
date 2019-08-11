@@ -7,5 +7,6 @@ import {BoardComponent} from '../board/board.component';
 export class GameService {
   newShip(size) {
   }
+
   constructor() { }
 }
