@@ -22,10 +22,6 @@ export class BoardComponent implements OnInit {
     this.rows.push(new Row(gameController));
     this.rows.push(new Row(gameController));
 
-    function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min)) + min;
-    }
-
     const carrier = new Ship(4);
     const battleshipf = new Ship(3);
     const battleships = new Ship(3);
@@ -36,53 +32,17 @@ export class BoardComponent implements OnInit {
     const destroyers = new Ship(1);
     const destroyert = new Ship(1);
     const destroyere = new Ship(1);
-    const i = getRandomInt(0, 10);
-    if (i === 1) {
-      // first
-      this.setShip(0, 0, carrier);
-      this.setShip(1, 0, carrier);
-      this.setShip(2, 0, carrier);
-      this.setShip(3, 0, carrier);
-
-      this.setShip(0, 2, battleshipf);
-      this.setShip(1, 2, battleshipf);
-      this.setShip(2, 2, battleshipf);
-
-      this.setShip(4, 2, destroyerf);
-
-      this.setShip(6, 0, battleships);
-      this.setShip(6, 1, battleships);
-      this.setShip(6, 2, battleships);
-
-      this.setShip(9, 0, cruiserf);
-      this.setShip(8, 0, cruiserf);
-      // end
-    }
-    if (i === 2) {
-      // second
-      this.setShip(9, 0, carrier);
-      this.setShip(9, 1, carrier);
-      this.setShip(9, 2, carrier);
-      this.setShip(9, 3, carrier);
-      // end
-    }
-    if (i === 3) {
-      // third
-      this.setShip(9, 9, carrier);
-      this.setShip(8, 9, carrier);
-      this.setShip(7, 9, carrier);
-      this.setShip(6, 9, carrier);
-      // end
-    }
-    if (i === 4) {
-      // fourth
-      this.setShip(0, 9, carrier);
-      this.setShip(0, 8, carrier);
-      this.setShip(0, 7, carrier);
-      this.setShip(0, 6, carrier);
-      // end
-    }
-
+    let cellsToShot = [...Array(100).keys()];
+    cellsToShot = this.newShip(4, carrier, cellsToShot);
+    cellsToShot = this.newShip(3, battleshipf, cellsToShot);
+    cellsToShot = this.newShip(3, battleships, cellsToShot);
+    cellsToShot = this.newShip(2, cruiserf, cellsToShot);
+    cellsToShot = this.newShip(2, cruisers, cellsToShot);
+    cellsToShot = this.newShip(2, cruisert, cellsToShot);
+    cellsToShot = this.newShip(1, destroyerf, cellsToShot);
+    cellsToShot = this.newShip(1, destroyers, cellsToShot);
+    cellsToShot = this.newShip(1, destroyert, cellsToShot);
+    cellsToShot = this.newShip(1, destroyere, cellsToShot);
   }
 
   ngOnInit() {
@@ -93,4 +53,25 @@ export class BoardComponent implements OnInit {
       this.rows[y].setShip(x, ship);
     }
   }
+
+  newShip(sizeShip, idShip, cellsToShot) {
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+    let i: number;
+    const a = getRandomInt(0, 7);
+    const b = getRandomInt(0, 7);
+    const rot = getRandomInt(1, 3);
+    const helpArray = [...Array(4).keys()];
+    for (i of helpArray) {
+      if (rot === 1) {
+        this.setShip(a, b + i, idShip);
+        const ab = String(a) + String(b + i);
+        delete cellsToShot[Number(ab) - 1];
+      } else {
+        this.setShip(a + i, b, idShip);
+      }
+      }
+    return cellsToShot;
+    }
 }
