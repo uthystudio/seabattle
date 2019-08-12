@@ -6,6 +6,7 @@ import { RowComponent } from './row/row.component';
 import { CellComponent } from './cell/cell.component';
 import { BoardComponent } from './board/board.component';
 import { StatusComponent } from './status/status.component';
+import { ToShotComponent } from './to-shot/to-shot.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { StatusComponent } from './status/status.component';
     RowComponent,
     CellComponent,
     BoardComponent,
-    StatusComponent
+    StatusComponent,
+    ToShotComponent
   ],
   imports: [
     BrowserModule
