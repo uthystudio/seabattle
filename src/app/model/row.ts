@@ -23,4 +23,12 @@ export class Row {
       this.cells[x].setShip(ship);
     }
   }
+
+  isCellFree(x: number) {
+    if (x >= 0 && x < 10) {
+      return this.cells[x].isCellFree();
+    } else {
+      return false;
+    }
+  }
 }

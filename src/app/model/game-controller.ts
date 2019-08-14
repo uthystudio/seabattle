@@ -21,7 +21,4 @@ export class GameController {
   missed() {
     this.message = '>> Промахнулся!';
   }
-  killed() {
-    this.message = '>> Убил!';
-  }
 }

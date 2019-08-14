@@ -7,12 +7,10 @@ import {Cell} from '../model/cell';
   styleUrls: ['./cell.component.css']
 })
 export class CellComponent implements OnInit {
-  @Input() cell: Cell;
   constructor() { }
-  clicked() {
-    this.cell.changeColor();
-  }
+  @Input() cell: Cell;
   ngOnInit() {
+    this.cell.changeColor();
   }
 
 }

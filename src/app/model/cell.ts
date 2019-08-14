@@ -35,4 +35,8 @@ export class Cell {
     this.bgColor = CellStates.SHIPPED;
     this.ship = ship;
   }
+
+  isCellFree() {
+    return this.bgColor !== CellStates.SHIPPED;
+  }
 }
