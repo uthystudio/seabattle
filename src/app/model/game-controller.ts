@@ -4,9 +4,13 @@ import {Injectable} from '@angular/core';
   providedIn: 'root',
   })
 export class GameController {
-  message: string;
   constructor() {
     this.yourturn();
+  }
+  message: string;
+  whereToShot = 'X: Not, Y: Not';
+  static getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
   }
   yourturn() {
     this.message = '>> Ваш ход!';
@@ -20,5 +24,11 @@ export class GameController {
   }
   missed() {
     this.message = '>> Промахнулся!';
+  }
+  botTurn() {
+    const xToShot = GameController.getRandomInt(1, 11);
+    const yToShot = GameController.getRandomInt(1, 11);
+    this.message = '>> Отметьте координаты на вашем поле.';
+    this.whereToShot = 'X: ' + String(xToShot) + ', Y: ' + String(yToShot);
   }
 }

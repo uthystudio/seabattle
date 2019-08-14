@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {GameController} from '../model/game-controller';
 
 @Component({
   selector: 'app-to-shot',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./to-shot.component.css']
 })
 export class ToShotComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(public gameController: GameController) { }
+  yourTurn() {
+    this.gameController.whereToShot = 'X: Not, Y: Not';
+    this.gameController.yourturn();
+  }
   ngOnInit() {
   }
 

@@ -58,7 +58,7 @@ export class BoardComponent implements OnInit {
     }
   }
 
-  isCellFreeHelpFunction(x: number, y: number){
+  isCellFreeHelpFunction(x: number, y: number) {
     if (y >= 0 && y < 10) {
       return this.rows[y].isCellFree(x);
     } else {
@@ -68,7 +68,7 @@ export class BoardComponent implements OnInit {
   isCellFree(x: number, y: number) {
     if (y >= 0 && y < 10) {
       // tslint:disable-next-line:max-line-length
-      return this.rows[y].isCellFree(x) && this.isCellFreeHelpFunction(x + 1, y) && this.isCellFreeHelpFunction(x + 1, y - 1) && this.isCellFreeHelpFunction(x, y - 1);
+      return this.rows[y].isCellFree(x) && this.isCellFreeHelpFunction(x + 1, y) && this.isCellFreeHelpFunction(x + 1, y - 1) && this.isCellFreeHelpFunction(x, y - 1) && this.isCellFreeHelpFunction(x, y + 1) && this.isCellFreeHelpFunction(x + 1, y + 1) && this.isCellFreeHelpFunction(x - 1, y + 1) && this.isCellFreeHelpFunction(x - 1, y) && this.isCellFreeHelpFunction(x - 1, y - 1);
     } else {
       return false;
     }
@@ -90,8 +90,8 @@ export class BoardComponent implements OnInit {
 
   newShip(sizeShip, idShip) {
     let i: number;
-    const x = BoardComponent.getRandomInt(0, 7);
-    const y = BoardComponent.getRandomInt(0, 7);
+    const x = BoardComponent.getRandomInt(0, 10);
+    const y = BoardComponent.getRandomInt(0, 10);
     let isGoodToPutShip = 0;
     const rot = BoardComponent.getRandomInt(1, 3);
     const helpArray = [...Array(sizeShip).keys()];
@@ -108,10 +108,15 @@ export class BoardComponent implements OnInit {
         }
       }
     }
-    if (isGoodToPutShip >= sizeShip) {
-      this.putShipIntoCells(x, y, idShip, sizeShip, rot);
+
+    try {
+      if (isGoodToPutShip >= sizeShip) {
+        this.putShipIntoCells(x, y, idShip, sizeShip, rot);
       } else {
         this.newShip(sizeShip, idShip);
       }
+    } catch (e) {
+      console.log('Something happened, try again!');
+    }
   }
 }

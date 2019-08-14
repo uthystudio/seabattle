@@ -1,12 +1,11 @@
 import {GameController} from './game-controller';
-import {tick} from '@angular/core/testing';
 import {Ship} from './ship';
 
 enum CellStates {
   NONE = 'white',
   SHIPPED = 1,
   SHOT = 'green',
-  MISSED = 'red'
+  MISSED = 'red',
 }
 
 export class Cell {
@@ -22,12 +21,12 @@ export class Cell {
       this.ship.shooted();
       this.bgColor = CellStates.SHOT;
       this.gameController.shooted(this.ship.isKilled());
-      setTimeout(() => this.gameController.yourturn(), 900);
+      setTimeout(() => this.gameController.botTurn(), 900);
     }
     if (this.bgColor === CellStates.NONE) {
       this.bgColor = CellStates.MISSED;
       this.gameController.missed();
-      setTimeout(() => this.gameController.yourturn(), 900);
+      setTimeout(() => this.gameController.botTurn(), 900);
     }
   }
 
