@@ -3,9 +3,9 @@ import {Ship} from './ship';
 
 enum CellStates {
   NONE = 'white',
-  SHIPPED = 1,
+  SHIPPED = '#fff',
   SHOT = 'green',
-  MISSED = 'red',
+  MISSED = 'red'
 }
 
 export class Cell {

@@ -13,22 +13,22 @@ export class GameController {
     return Math.floor(Math.random() * (max - min)) + min;
   }
   yourturn() {
-    this.message = '>> Ваш ход!';
+    this.message = '>> Your Turn!';
   }
   shooted(isKilled: boolean) {
     if (isKilled === true) {
-      this.message = '>> Убил!';
+      this.message = '>> Killed!';
     } else {
-      this.message = '>>> Попал!';
+      this.message = '>>> Shooted!';
     }
   }
   missed() {
-    this.message = '>> Промахнулся!';
+    this.message = '>> Missed!';
   }
   botTurn() {
     const xToShot = GameController.getRandomInt(1, 11);
     const yToShot = GameController.getRandomInt(1, 11);
-    this.message = '>> Отметьте координаты на вашем поле.';
+    this.message = '>> Mark the coordinates on your field';
     this.whereToShot = 'X: ' + String(xToShot) + ', Y: ' + String(yToShot);
   }
 }

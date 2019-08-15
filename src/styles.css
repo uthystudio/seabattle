@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+.body {
+  background-image: linear-gradient(rgba(0, 188, 212, 0.78), rgba(0, 0, 0, 0.78)), url("https://in-rating.ru/space/wp-content/uploads/2016/03/WoWS_01.jpg");
+  background-size: cover;
+  color: white;
+}

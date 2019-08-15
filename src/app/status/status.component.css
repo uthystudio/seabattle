@@ -1,6 +1,7 @@
 .chat {
-  width: 540px;
+  width: 100%;
   background: bisque;
-  height: 50px;
+  height: 20px;
   color: #000000;
+  font-family: "Agency FB";
 }

@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Cell} from '../model/cell';
-import {ToShotComponent} from '../to-shot/to-shot.component';
 import {GameController} from '../model/game-controller';
 
 @Component({
