@@ -1,5 +1,8 @@
 import {GameController} from './game-controller';
 import {Ship} from './ship';
+import {Playercell} from './playercell';
+import {MyBoardComponent} from '../player-board/my-board.component';
+import {Input} from '@angular/core';
 
 enum CellStates {
   NONE = 'white',
@@ -9,6 +12,7 @@ enum CellStates {
 }
 
 export class Cell {
+  myBoardComponent: MyBoardComponent;
   bgColor: CellStates;
   ship: Ship;
 
@@ -21,7 +25,7 @@ export class Cell {
       this.ship.shooted();
       this.bgColor = CellStates.SHOT;
       this.gameController.shooted(this.ship.isKilled());
-      setTimeout(() => this.gameController.botTurn(), 900);
+      setTimeout(() => this.gameController.yourturn(), 900);
     }
     if (this.bgColor === CellStates.NONE) {
       this.bgColor = CellStates.MISSED;
@@ -37,5 +41,8 @@ export class Cell {
 
   isCellFree() {
     return this.bgColor !== CellStates.SHIPPED;
+  }
+  changeColorToRed() {
+    this.bgColor = CellStates.MISSED;
   }
 }

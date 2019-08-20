@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MyRow} from '../model/myrow';
+import {Playerrow} from '../model/playerrow';
 
 @Component({
   selector: 'app-my-row',
@@ -7,7 +7,7 @@ import {MyRow} from '../model/myrow';
   styleUrls: ['./my-row.component.css']
 })
 export class MyRowComponent implements OnInit {
-  @Input() myRow: MyRow;
+  @Input() myRow: Playerrow;
 
   constructor() { }
 

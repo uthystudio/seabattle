@@ -1,6 +1,7 @@
 import {Cell} from './cell';
 import {GameController} from './game-controller';
 import {Ship} from './ship';
+import {MyBoardComponent} from '../player-board/my-board.component';
 
 export class Row {
   cells: Cell[] = [];

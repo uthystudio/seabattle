@@ -8,10 +8,6 @@ import {GameController} from '../model/game-controller';
 })
 export class ToShotComponent implements OnInit {
   constructor(public gameController: GameController) { }
-  yourTurn() {
-    this.gameController.whereToShot = 'X: Not, Y: Not';
-    this.gameController.yourturn();
-  }
   ngOnInit() {
   }
 

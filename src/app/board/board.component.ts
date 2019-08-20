@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {Row} from '../model/row';
 import {GameController} from '../model/game-controller';
 import {Ship} from '../model/ship';
-import {Cell} from '../model/cell';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
+@Injectable({
+  providedIn: 'root',
+})
 export class BoardComponent implements OnInit {
 
+  isCellHere: boolean;
   constructor(gameController: GameController) {
     this.rows.push(new Row(gameController));
     this.rows.push(new Row(gameController));
@@ -68,7 +71,8 @@ export class BoardComponent implements OnInit {
   isCellFree(x: number, y: number) {
     if (y >= 0 && y < 10) {
       // tslint:disable-next-line:max-line-length
-      return this.rows[y].isCellFree(x) && this.isCellFreeHelpFunction(x + 1, y) && this.isCellFreeHelpFunction(x + 1, y - 1) && this.isCellFreeHelpFunction(x, y - 1) && this.isCellFreeHelpFunction(x, y + 1) && this.isCellFreeHelpFunction(x + 1, y + 1) && this.isCellFreeHelpFunction(x - 1, y + 1) && this.isCellFreeHelpFunction(x - 1, y) && this.isCellFreeHelpFunction(x - 1, y - 1);
+      this.isCellHere = this.rows[y].isCellFree(x) && this.isCellFreeHelpFunction(x + 1, y) && this.isCellFreeHelpFunction(x + 1, y - 1) && this.isCellFreeHelpFunction(x, y - 1) && this.isCellFreeHelpFunction(x, y + 1) && this.isCellFreeHelpFunction(x + 1, y + 1) && this.isCellFreeHelpFunction(x - 1, y + 1) && this.isCellFreeHelpFunction(x - 1, y) && this.isCellFreeHelpFunction(x - 1, y - 1);
+      return this.isCellHere;
     } else {
       return false;
     }

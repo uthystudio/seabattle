@@ -1,5 +1,3 @@
-import {isBoolean} from 'util';
-
 export class Ship {
   // Количество подбитых клеток
   private shotCells: number;
@@ -11,6 +9,9 @@ export class Ship {
     this.shotCells++;
   }
   isKilled() {
+    // if (this.size === this.shotCells) {
+    //   Cell.changeColorToRed();
+    // }
     return this.size === this.shotCells;
   }
 }
